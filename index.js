@@ -15,17 +15,23 @@ for (let i = 0; i < 5; i++) {
 
 // practice
 // class 사용
-class StudentList {
-  constructor(id, name, Class) {
-    this.id = id;
-    this.names = name;
-    this.class = Class;
-  }
-  log() {
-    console.log(
-      `ID : ${this.id} / names : ${this.names} / class : ${this.class}`
-    );
-  }
+// class StudentList {
+//   constructor(id, name, Class) {
+//     this.id = id;
+//     this.names = name;
+//     this.class = Class;
+//   }
+//   log() {
+//     console.log(
+//       `ID : ${this.id} / names : ${this.names} / class : ${this.class}`
+//     );
+//   }
+// }
+function StudentList(id, name, Class, adress) {
+  this.id = id;
+  this.name = name;
+  this.class = Class;
+  this.adress = adress;
 }
 let studentList = [
   '강예훈',
@@ -58,9 +64,33 @@ let studentList = [
   '한가람',
 ];
 const aboutStudent = [];
+// for (let i = 0; i < studentList.length; i++) {
+//   aboutStudent.push(new StudentList(i + 1, studentList[i], 'KDT')); // 새배열에 인스턴스화한 데이터 넣음
+//   const myClass = new StudentList(i + 1, studentList[i], 'KDT');
+//   myClass.logs(); // 클래스 메서드 호출
+// }
+// console.table(aboutStudent);
+
+// aboutStudent.forEach((value) => {
+//   if (value.id % 2 === 0) {
+//     console.log(value);
+//   }
+// });
+
 for (let i = 0; i < studentList.length; i++) {
-  aboutStudent.push(new StudentList(i + 1, studentList[i], 'KDT')); // 새배열에 인스턴스화한 데이터 넣음
-  const myClass = new StudentList(i + 1, studentList[i], 'KDT');
-  myClass.log(); // 클래스 메서드 호출
+  aboutStudent.push(new StudentList(i + 1, studentList[i], 'KDT', '모름')); // 새배열에 인스턴스화한 데이터 넣음
 }
-console.log(aboutStudent); //데이터 넣은 배열 콘솔로 찍음
+// console.table(aboutStudent);
+aboutStudent.forEach((value) => {
+  // console.log(value.name);
+  if (value.name.startsWith('김')) {
+    value.name = value.name.replace('김', '금'); // 김씨성 금씨로 바꿨음
+  }
+  if (value.id % 2 === 0) {
+    value.name = value.name + '★'; //짝수 ID를 가지신분들 이름 뒤에 ★붙임
+  }
+  if (value.name.includes('전형민')) {
+    value.adress = '알고있음'; // 전형민씨 주소 알고있음으로함
+  }
+});
+console.table(aboutStudent);

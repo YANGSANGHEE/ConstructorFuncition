@@ -22,7 +22,9 @@ class StudentList {
     this.class = Class;
   }
   log() {
-    return `${this.id} ${this.names} ${this.class}`;
+    console.log(
+      `ID : ${this.id} / names : ${this.names} / class : ${this.class}`
+    );
   }
 }
 let studentList = [
@@ -57,8 +59,8 @@ let studentList = [
 ];
 const aboutStudent = [];
 for (let i = 0; i < studentList.length; i++) {
-  aboutStudent.push(new StudentList(i + 1, studentList[i], 'KDT'));
+  aboutStudent.push(new StudentList(i + 1, studentList[i], 'KDT')); // 새배열에 인스턴스화한 데이터 넣음
   const myClass = new StudentList(i + 1, studentList[i], 'KDT');
-  console.log(myClass.log());
+  myClass.log(); // 클래스 메서드 호출
 }
-console.log(aboutStudent);
+console.log(aboutStudent); //데이터 넣은 배열 콘솔로 찍음
